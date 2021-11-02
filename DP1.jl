@@ -21,7 +21,7 @@ v = vnew .+ 2*tolerance # initialize v in a way that ensures loop will start
 global cartesianindex = Array{CartesianIndex{2}, n}
 i = 1
 
-while maximum(abs.(v - vnew)) > tolerance && iter <= imax
+while maximum(abs.(v - vnew)) > tolerance && i <= imax
    ### STEP 2a - calculate frist by columns in the first row and then jump to the other rwo
     # pre-allocate memory
     v = vnew
@@ -36,7 +36,7 @@ while maximum(abs.(v - vnew)) > tolerance && iter <= imax
     ### STEP 2b
     (vnew, cartesianindex) = findmax(log.(c) .+ β*v', dims = 2) 
     end  
-    iter += 1 #adding counter
+    i += 1 #adding counter
 end
 
 vnew
