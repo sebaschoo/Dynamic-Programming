@@ -2,7 +2,6 @@
 ### DYNAMIC PROGRAMMING ###
 ###########################
 
-
 ### STEP 0
 α = 0.3
 δ = 0.1
@@ -18,7 +17,7 @@ tolerance = 0.001
 imax = 1000
 vnew = zeros(length(kgrid)) # initial value function guess
 v = vnew .+ 2*tolerance # initialize v in a way that ensures loop will start
-global cartesianindex = Array{CartesianIndex{2}, n}
+global cartesianindex = Array{CartesianIndex{2}, n} #vector of cartesion coordinates 
 i = 1
 
 while maximum(abs.(v - vnew)) > tolerance && i <= imax
@@ -44,6 +43,6 @@ vnew
 scatter(kgrid, vnew, title = "v(k)")
 
 # Policy function
-kprimeindex = getindex.(cartesianindex, 2)
+kprimeindex = getindex.(cartesianindex, 2) #take the second index of cartesiona index
 kprime = kgrid[kprimeindex]
 scatter(kgrid, kprime, title = "k'(k)")
